@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppy Game</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        #no-btn {
+            position: absolute;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 480px) {
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2 id="initial-message"> Peggi Do you love me?</h2>
+        <img id="puppy-img" src="https://media.tenor.com/p_VEcmrBsLMAAAAi/manja.gif" alt="Requesting Puppy" width="300" height="200">
+        <br><br>
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const puppy = document.getElementById('puppy-img');
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const messageDiv = document.getElementById('message');
+        const initialMessage = document.getElementById('initial-message');
+
+        yesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            messageDiv.textContent = 'Love u tooooooo ....ippudaina na name change chey';
+            puppy.src = 'https://media.tenor.com/jq-K8XaaWb4AAAAi/peach-goma.gif';
+           
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+            initialMessage.style.display = 'none';
+        });
+
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            messageDiv.textContent = 'Please think again';
+            puppy.src = 'https://media.tenor.com/hLgZBJ7RjzYAAAAi/cute-dog.gif';
+            
+            const randomX = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        });
+    </script>
+</body>
+</html>
